@@ -3,7 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<title>kpglide.com</title>
+	{% if title %}
+	<title>{{ title }}</title>
+	{% else %}
+	<title>kpglide.com</title>
+	{% endif %}
+
 <link rel="stylesheet" href="static/base_styles.css">
 
 </head>
@@ -19,3 +24,11 @@
 	</ul>
 	</hgroup>
 </div>
+
+{% block content %}
+{% endblock %}
+
+<div id="footer"><p>Copyright info and footer links</p></div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Please Register</h3>
+<form action="" method="post" name="register">
+	{{ form.hidden_tag() }}
+	<p id="registration_form">
+		First Name: {{form.first_name}}<br>
+		Last Name: {{form.last_name}}<br>
+		Username: {{form.user_name}}<br>
+		Password: {{form.password}}<br>
+	</p>
+</form>
+{% endblock %}
