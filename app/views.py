@@ -1,6 +1,6 @@
 from app import app
-from flask import render_template, url_for
-from forms import AdminRegistrationForm
+from flask import render_template, url_for, redirect
+from forms import LoginForm
 
 @app.route('/index')
 @app.route('/')
@@ -23,5 +23,7 @@ def index():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-	form = AdminRegistrationForm()
-	return render_template('admin.html', form=form)
+	login_form = LoginForm()
+	if login_form.validate_on_submit():
+		return redirect('/index')
+	return render_template('admin.html', form=login_form)

@@ -66,10 +66,24 @@ body {
 	padding: .1%;
 }
 
-#footer p {
- 	color: #b2b2cc
+#footer ul {
+	text-align: center;
 }
 
+#footer li {
+	display: inline-block;
+}
+
+#footer a {
+	color: #b2b2cc;
+}
+
+#form_container {
+	margin-left: 10%;
+}
+
+#login_form_error {
+	color: red;
 }
 
 @media screen and (min-width: 481px) {
