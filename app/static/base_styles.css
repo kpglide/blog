@@ -58,6 +58,17 @@ body {
 	border-radius: 16px;
 }
 
+#flashed_messages {
+	top-margin: 20px;
+	clear: both;
+	width: 100%;
+}
+
+#flashed_messages li {
+	color: red;
+	display: inline-block;
+}
+
 #footer {
 	top-margin: 20px;
 	clear: both;

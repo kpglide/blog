@@ -28,6 +28,18 @@
 {% block content %}
 {% endblock %}
 
+<div id="flashed_messages">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+	
 <footer id="footer">
 	<ul><li><a href="/admin">Admin</a></li></ul>
 </footer>

@@ -1,6 +1,7 @@
 from app import app
-from flask import render_template, url_for, redirect
+from flask import render_template, flash, url_for, redirect
 from forms import LoginForm
+from models import User
 
 @app.route('/index')
 @app.route('/')
@@ -23,7 +24,12 @@ def index():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-	login_form = LoginForm()
-	if login_form.validate_on_submit():
-		return redirect('/index')
-	return render_template('admin.html', form=login_form)
+	form = LoginForm()
+	if form.validate_on_submit():
+		user = User.query.filter_by(username=form.username.data, password=form.password.data).all()
+		if user:
+			return redirect(url_for('index'))
+		else:
+			flash('Sorry, you are not registered.  Please contact the site owner to register.')
+			return render_template('admin.html', form=form)
+	return render_template('admin.html', form=form)
