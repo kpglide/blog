@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="form_container">
+<h3>Create a Post</h3>
+<form action="" method="post" name="blog_post_form">
+	{{ form.hidden_tag() }}
+	<div id="blog_post_form">
+		<p>Title: {{form.title}}<br>
+		{% for error in form.errors.username %}
+		<label id="blog_post_form_error">[{{error}}]</label>
+		{% endfor %}</p>
+		<p>Body: {{form.body}}<br>
+		{% for error in form.errors.password %}
+		<label id="blog_post_form_error">[{{error}}]</label>
+		{% endfor %}</p>
+	</div>
+	<div><input type="submit" value="Submit"></div> 
+</form>
+</div>
+{% endblock %}

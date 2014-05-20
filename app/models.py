@@ -28,6 +28,11 @@ class Post(db.Model):
 	timestamp = db.Column(db.DateTime)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 	
+	def __init__(self, title, body, user_id):
+		self.title = title
+		self.body = body
+		self.user_id = user_id
+	
 	def __repr__(self):
-		return '<Post %r>' (self.title)
+		return '<Post %r>' % (self.title)
 
