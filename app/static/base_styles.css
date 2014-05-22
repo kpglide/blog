@@ -42,10 +42,19 @@ body {
 	margin: 1%;
 	background-color: #b2b2cc;
 	line-height: 1.5em;
-	padding: 1em 1em;
+	padding: .50em 1em;
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
+}
+
+#title {
+	font-size: 150%;
+	font-weight: bold;
+}
+
+#byline {
+	font-size: 85%%;
 }
 
 #sidebar {
@@ -77,8 +86,9 @@ body {
 	padding: .1%;
 }
 
-#footer ul {
-	text-align: center;
+#admin_login {
+	text-align: right;
+	padding-right: 2%;
 }
 
 #footer li {

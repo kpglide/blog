@@ -29,6 +29,8 @@ def admin():
 @app.route('/logout')
 def logout():
 	session.pop('logged_in', None)
+	session.pop('user_id', None)
+	session.pop('username', None)
 	flash('You were logged out')
 	return redirect(url_for('index'))
 	
@@ -37,12 +39,29 @@ def post():
 	if 'logged_in' not in session:
 		return redirect(url_for('admin'))
 	form = PostForm()
-	id = session['user_id'] 
+	user_id = session['user_id'] 
 	if form.validate_on_submit():
-		post = Post(title=form.title.data, body=form.body.data, user_id=id)
+		post = Post(title=form.title.data, body=form.body.data, user_id=user_id)
 		db.session.add(post)
 		db.session.commit()
 		flash('Your post is now live.')
 		return redirect('index')
 	return render_template('post.html', form=form)
+	
+@app.route('/delete/<int:id>')
+def delete(id):
+	if 'logged_in' not in session:
+		return redirect(url_for('index'))
+	post = Post.query.get(id)
+	if post == None:
+		flash('Post not found.')
+		return redirect(url_for('index'))
+	if post.user_id != session['user_id']:
+		flash('You do not have rights to delete this post.')
+		return redirect(url_for('index'))
+	db.session.delete(post)
+	db.session.commit()
+	flash('Your post has been deleted.')
+	return redirect(url_for('index'))
+
 	

@@ -11,6 +11,10 @@
 
 <link rel="stylesheet" href="static/base_styles.css">
 
+<head>
+	{{ moment.include_jquery() }}
+	{{ moment.include_moment() }}
+
 </head>
 	
 <body>
@@ -25,9 +29,6 @@
 	</hgroup>
 </div>
 
-{% block content %}
-{% endblock %}
-
 <div id="flashed_messages">
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -39,11 +40,17 @@
     {% endif %}
     {% endwith %}
 </div>
+
+{% block content %}
+{% endblock %}
 	
 <footer id="footer">
-	<ul>
-		<li><a href="/admin">Admin</a></li>
+	<ul id="admin_login">
+		{% if session.logged_in %}
 		<li><a href="/logout">Logout</a></li>
+		{% else %}
+		<li><a href="/admin">Admin_Login</a></li>
+		{% endif %}
 	</ul>
 </footer>
 </body>

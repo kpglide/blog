@@ -1,5 +1,6 @@
 from app import db
 from flask.ext.sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 ROLE_USER = 0
 ROLE_ADMIN = 1
@@ -28,10 +29,13 @@ class Post(db.Model):
 	timestamp = db.Column(db.DateTime)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 	
-	def __init__(self, title, body, user_id):
+	def __init__(self, title, body, user_id, timestamp=None):
 		self.title = title
 		self.body = body
 		self.user_id = user_id
+		if timestamp is None:
+			timestamp = datetime.utcnow()
+		self.timestamp = timestamp
 	
 	def __repr__(self):
 		return '<Post %r>' % (self.title)
