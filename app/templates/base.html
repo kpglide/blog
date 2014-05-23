@@ -21,9 +21,9 @@
 
 <div id="masthead">
 	<hgroup>
-	<h2><a href="/index">kpglide</a></h2>
+	<h3><a href="/index">kpglide.com</a></h2>
 	<ul>
-	<li><a href="">Home</a></li>
+	<li><a href="{{url_for('index')}}">Home</a></li>
 	<li><a href="">About</a></li>
 	</ul>
 	</hgroup>
@@ -47,9 +47,12 @@
 <footer id="footer">
 	<ul id="admin_login">
 		{% if session.logged_in %}
-		<li><a href="/logout">Logout</a></li>
+		<li>
+			<a href="{{ url_for('post') }}">Post</a>
+			<a href="/logout">Logout</a>
+		</li>
 		{% else %}
-		<li><a href="/admin">Admin_Login</a></li>
+		<li><a href="/admin">Admin Login</a></li>
 		{% endif %}
 	</ul>
 </footer>
