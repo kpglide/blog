@@ -2,12 +2,14 @@ from app import app, db
 from flask import render_template, flash, url_for, redirect, session
 from forms import LoginForm, PostForm
 from models import User, Post
+from config import POSTS_PER_PAGE
 
-@app.route('/index')
 @app.route('/')
-def index():
-	posts = Post.query.all()
-	return render_template("index.html", posts=posts)
+@app.route('/index')
+@app.route('/index/<int:page>')
+def index(page = 1):
+	posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
+	return render_template('index.html', posts=posts)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -64,4 +66,7 @@ def delete(id):
 	flash('Your post has been deleted.')
 	return redirect(url_for('index'))
 
+@app.route('/about')
+def about():
+	return render_template('about.html')
 	
