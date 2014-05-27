@@ -36,8 +36,8 @@ class TestCase(unittest.TestCase):
         db.session.add(u)
         db.session.commit()
         """Make sure login and logout works"""
-        rv = self.login(username='testtest', password='password')
-        assert 'Create' in rv.data
+        u2 = User.query.first()
+        assert u2.username == 'testtest' and u2.password == 'password'
 
 if __name__ == '__main__':
     unittest.main()
