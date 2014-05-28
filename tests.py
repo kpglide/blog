@@ -1,5 +1,6 @@
 import os
 import unittest
+from datetime import datetime
 import config
 from config import basedir
 from app import app, db
@@ -22,36 +23,64 @@ class TestCase(unittest.TestCase):
 
     def login(self, username, password):
         return self.app.post('/admin', data={
-			'username':'testtest',
-			'password':'password'
+			'username': username,
+			'password': password
         }, follow_redirects=True)
 
     def logout(self):
         return self.app.get('/logout', follow_redirects=True)
+		
+    def post(self, title, body):
+        return self.app.post('/post', data={
+			'title': title,
+			'body': body
+        }, follow_redirects=True)
 
-    def test_most_recent_post(self):
-        val = self.app.get('/')
-        assert 'About' in val.data
-
-    def test_create_user(self):
+    def create_user(self):
         u = User(username='testtest', password='password', role=1)
         db.session.add(u)
         db.session.commit()
+		
+    def create_post(self):
+		self.create_user()
+		u = User.query.first()
+		p = Post(title='test_post', body='test_post_body', user_id=u.id)
+		db.session.add(p)
+		db.session.commit()
+
+    def test_create_user(self):
+        u = self.create_user()
         u2 = User.query.first()
         assert u2.username == 'testtest' and u2.password == 'password'
 		
     def test_home_page(self):
         response = self.app.get('/index')
-        assert 'describing' in response.data
+        assert '<div id="post">' in response.data
 		
     def test_login(self):
-        u = User(username='testtest', password='password', role=1)
-        db.session.add(u)
-        db.session.commit()
+        self.create_user()
         response = self.login(username='testtest', password='password')
         assert 'Post' in response.data
-	
 
+    def test_logout(self):
+        self.create_user()
+        self.login(username='testtest', password='password')
+        response = self.logout()
+        assert 'logged' in response.data
+		
+    def test_create_post(self):
+        p = self.create_post()
+        p2 = Post.query.first()
+        assert p2.title == 'test_post' and p2.body == 'test_post_body'
+
+    def test_post(self):
+        self.create_user()
+        self.login(username='testtest', password='password')
+        response = self.post(title='test_post', body='test_post_body')
+        print response.data
+        assert ('test_post' and 'test_post_body') in response.data
+		
+		
 if __name__ == '__main__':
     unittest.main()
 
