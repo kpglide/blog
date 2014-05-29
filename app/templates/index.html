@@ -5,7 +5,9 @@
 	{% for post in posts.items %}
 		<div id="post_wrapper">
 			<p id="title">{{ post.title }}</p>
-			<p id="byline">By: {{ post.user.username }} on {{ moment(post.timestamp).format('LLL') }}</p>
+			<p id="byline">
+			By: {{ post.user.username }} on {{ moment(post.timestamp).format('LLL') }}
+			</p>
 			<p id="post_body">{{post.body }}</p>
 			{% if post.user_id == session['user_id'] %}
 			<p><a href="{{ url_for('delete', id = post.id) }}">Delete</a>

@@ -7,11 +7,11 @@
 	<form action="" method="post" name="blog_post_form">
 	{{ form.hidden_tag() }}
 	<div id="blog_post_form">
-		<p>Title:<br>{{form.title(id="title_input")}}
+		<p>Title<br>{{form.title(id="title_input")}}
 			{% for error in form.errors.username %}
 				<label id="blog_post_form_error">[{{error}}]</label>
 			{% endfor %}</p>
-		<p>Body:<br> {{form.body(id="body_input")}}<br>
+		<p>Body<br> {{form.body(id="body_input")}}<br>
 			{% for error in form.errors.password %}
 				<label id="blog_post_form_error">[{{error}}]</label>
 			{% endfor %}</p>

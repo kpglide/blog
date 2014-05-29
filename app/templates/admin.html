@@ -21,11 +21,11 @@
 <form action="" method="post" name="login">
 	{{ form.hidden_tag() }}
 	<div id="login_form">
-		<p>Username: {{form.username}}<br>
+		<p>Username {{form.username}}<br>
 		{% for error in form.errors.username %}
 		<label id="login_form_error">[{{error}}]</label>
 		{% endfor %}</p>
-		<p>Password: {{form.password}}<br>
+		<p>Password {{form.password}}<br>
 		{% for error in form.errors.password %}
 		<label id="login_form_error">[{{error}}]</label>
 		{% endfor %}</p>

@@ -5,7 +5,6 @@ import config
 from config import basedir
 from app import app, db
 from app.models import User, Post
-from flask import url_for
 
 class TestCase(unittest.TestCase):
 
@@ -52,33 +51,50 @@ class TestCase(unittest.TestCase):
         u = self.create_user()
         u2 = User.query.first()
         assert u2.username == 'testtest' and u2.password == 'password'
+
+    def test_create_post(self):
+        p = self.create_post()
+        p2 = Post.query.first()
+        assert p2.title == 'test_post' and p2.body == 'test_post_body'
 		
     def test_home_page(self):
         response = self.app.get('/index')
         assert '<div id="post">' in response.data
-		
+
+    def test_about_page(self):
+        response = self.app.get('/about')
+        assert '<div id ="about_title">' in response.data		
+	
     def test_login(self):
         self.create_user()
         response = self.login(username='testtest', password='password')
         assert 'Post' in response.data
 
+    def test_invalid_login(self):
+        response = self.login(username='invalid', password='invalidpassword')
+        print response.data
+        assert 'contact' in response.data
+		
     def test_logout(self):
         self.create_user()
         self.login(username='testtest', password='password')
         response = self.logout()
         assert 'logged' in response.data
 		
-    def test_create_post(self):
-        p = self.create_post()
-        p2 = Post.query.first()
-        assert p2.title == 'test_post' and p2.body == 'test_post_body'
-
     def test_post(self):
         self.create_user()
         self.login(username='testtest', password='password')
         response = self.post(title='test_post', body='test_post_body')
-        print response.data
         assert ('test_post' and 'test_post_body') in response.data
+
+    def test_delete_post(self):
+        self.create_user()
+        self.login(username='testtest', password='password')
+        self.post(title='test_post', body='test_post_body')
+        p = Post.query.first()
+        url = '/delete/{}'.format(p.id)
+        response = self.app.get(url, follow_redirects=True)
+        assert 'deleted' in response.data
 		
 		
 if __name__ == '__main__':
