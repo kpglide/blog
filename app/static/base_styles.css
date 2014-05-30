@@ -8,6 +8,7 @@ body {
  	background-color: #F5F5F5;
 }
 
+/* Masthead styles */
 #masthead {
 	width: 100%;
 	background-color: #FFFFFF;
@@ -41,11 +42,13 @@ body {
 	color: #696969;
 }
 
-#nav {
-	position: fixed;
-	width: 100%;
-	background-color: #b2b2cc;
-	height: 10%;
+/* Styles for maing Index page, including blog post container,
+and post title, body and byline styles */
+
+#post_wrapper {
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	border-bottom-color: #7851a9;
 }
 
 #post {
@@ -79,12 +82,7 @@ body {
 	margin-top: 1.75em;
 }
 
-#post_wrapper {
-	border-bottom-style: solid;
-	border-bottom-width: thin;
-	border-bottom-color: #7851a9;
-}
-
+/* Styles for main Index page sidebar */
 #sidebar {
 	margin: 1%;
 	background-color: #FFFFFE;
@@ -98,35 +96,10 @@ body {
 	border-bottom-width: thin;
 }
 
-#flashed_messages {
-	top-margin: 20px;
-	clear: both;
-	width: 100%;
-}
-
-#flashed_messages li {
-	color: red;
-	display: inline-block;
-}
-
-#footer {
-	clear: both;
-	width: 100%;
-	background-color: #7851a9;
-	line-height: 175%;
-}
-
+/* Additional styles for Admin page, including login form */
 #admin_login {
 	text-align: right;
 	padding-right: 2%;
-}
-
-#footer li {
-	display: inline-block;
-}
-
-#footer a {
-	color: #b2b2cc;
 }
 
 #form_container {
@@ -137,6 +110,7 @@ body {
 	color: red;
 }
 
+/* Styles for Post page, including post form styles */
 #title_input {
 	width: 50%;
 	height: 1.5em;
@@ -147,6 +121,7 @@ body {
 	height: 5em;
 }
 
+/* Styles for About page */
 #about_title {
 	margin: 1%;
 	background-color: #7851a9;
@@ -173,6 +148,35 @@ body {
 	border-radius: 16px;
 }
 
+/* Footer styles */
+#footer {
+	clear: both;
+	width: 100%;
+	background-color: #7851a9;
+	line-height: 175%;
+}
+
+#footer li {
+	display: inline-block;
+}
+
+#footer a {
+	color: #b2b2cc;
+}
+
+/* Flashed message styling */
+#flashed_messages {
+	top-margin: 20px;
+	clear: both;
+	width: 100%;
+}
+
+#flashed_messages li {
+	color: red;
+	display: inline-block;
+}
+
+/* Styles rules for screens @ least 481px */
 @media screen and (min-width: 481px) {
 
 #post {
@@ -183,6 +187,7 @@ body {
 	margin: 1%;
 }
 	
+/* Style rules for screens @ least 780 px */
 @media screen and (min-width: 780px) {
 
 #masthead h2 {
@@ -214,11 +219,11 @@ body {
   margin: 2% 1.5% 2% 18%;
   width: 20%;
 }
- 
-#footer {
-	 clear: both;
-}
 
 #form_container {
 	margin: 2% 0% 2% 18%;
+}
+ 
+#footer {
+	 clear: both;
 }

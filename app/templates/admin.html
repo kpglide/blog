@@ -8,7 +8,7 @@
 </div>
 
 <div>
-<p><a href='/post'>Post</a></p>
+	<p><a href='/post'>Post</a></p>
 </div>
 
 <div>
@@ -17,21 +17,24 @@
 
 {% else %}
 <div id="form_container">
-<h3>Registered Users Login Here</h3>
-<form action="" method="post" name="login">
-	{{ form.hidden_tag() }}
-	<div id="login_form">
-		<p>Username {{form.username}}<br>
-		{% for error in form.errors.username %}
-		<label id="login_form_error">[{{error}}]</label>
-		{% endfor %}</p>
-		<p>Password {{form.password}}<br>
-		{% for error in form.errors.password %}
-		<label id="login_form_error">[{{error}}]</label>
-		{% endfor %}</p>
-	</div>
-	<div><input type="submit" value="Sign In"></div> 
-</form>
+	<h3>Registered Users Login Here</h3>
+	<form action="" method="post" name="login">
+		{{ form.hidden_tag() }}
+		<div id="login_form">
+			<p>Username {{form.username}}<br>
+				{% for error in form.errors.username %}
+				<label id="login_form_error">[{{error}}]</label>
+				{% endfor %}
+			</p>
+			<p>Password {{form.password}}<br>
+				{% for error in form.errors.password %}
+				<label id="login_form_error">[{{error}}]</label>
+				{% endfor %}
+			</p>
+		</div>
+		<div><input type="submit" value="Sign In"></div> 
+	</form>
 </div>
 {% endif %}
+
 {% endblock %}

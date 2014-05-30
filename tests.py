@@ -81,7 +81,7 @@ class TestCase(unittest.TestCase):
         response = self.logout()
         assert 'logged' in response.data
 		
-    def test_post(self):
+    def test_post_page(self):
         self.create_user()
         self.login(username='testtest', password='password')
         response = self.post(title='test_post', body='test_post_body')

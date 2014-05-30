@@ -5,6 +5,8 @@ from datetime import datetime
 ROLE_USER = 0
 ROLE_ADMIN = 1
 
+#Represents individual blog users, each with an associated username, password
+#role and various blog posts.
 class User(db.Model):
 	__tablename__ = 'users'
 	id = db.Column(db.Integer, primary_key=True)
@@ -20,7 +22,9 @@ class User(db.Model):
 
 	def __repr__(self):
 		return '<User %r>' % (self.username)
-		
+
+#Represents blog posts, each having a title, body and timestamp, plus
+#an association with an individual user		
 class Post(db.Model):
 	__tablename__ = 'posts'
 	id = db.Column(db.Integer, primary_key=True)

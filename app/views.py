@@ -4,6 +4,7 @@ from forms import LoginForm, PostForm
 from models import User, Post
 from config import POSTS_PER_PAGE
 
+#Display home page showing a paginated list of blog posts
 @app.route('/')
 @app.route('/index')
 @app.route('/index/<int:page>')
@@ -11,6 +12,7 @@ def index(page = 1):
 	posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
 	return render_template('index.html', posts=posts)
 
+#Display admin page where registered users are able to login
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
 	if 'logged_in' in session:
@@ -35,7 +37,8 @@ def logout():
 	session.pop('username', None)
 	flash('You were logged out')
 	return redirect(url_for('index'))
-	
+
+#Display post page where a logged in user may draft and submit a blog post	
 @app.route('/post', methods=['GET', 'POST'])
 def post():
 	if 'logged_in' not in session:
@@ -50,6 +53,7 @@ def post():
 		return redirect('index')
 	return render_template('post.html', form=form)
 	
+#Delete a blog post
 @app.route('/delete/<int:id>')
 def delete(id):
 	if 'logged_in' not in session:
@@ -66,6 +70,7 @@ def delete(id):
 	flash('Your post has been deleted.')
 	return redirect(url_for('index'))
 
+#Display the web app's about page
 @app.route('/about')
 def about():
 	return render_template('about.html')
