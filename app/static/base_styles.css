@@ -42,7 +42,7 @@ body {
 	color: #696969;
 }
 
-/* Styles for maing Index page, including blog post container,
+/* Styles for main Index page, including blog post container,
 and post title, body and byline styles */
 
 #post_wrapper {
@@ -66,7 +66,6 @@ and post title, body and byline styles */
 }
 
 #title {
-	font-size: 150%;
 	font-weight: bold;
 	color: black;
 	line-height: 25%;
@@ -127,7 +126,7 @@ and post title, body and byline styles */
 	background-color: #7851a9;
 	color: white;
 	font-size: 350%;
-	padding: .5em;
+	padding: 1%;
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
@@ -142,10 +141,14 @@ and post title, body and byline styles */
 	background-color: #7851a9;
 	color: white;
 	line-height: 1.5em;
-	padding: .5em;
+	padding: 1%;
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
+}
+
+#about_body a {
+	color: #b2b2cc;
 }
 
 /* Footer styles */
@@ -183,6 +186,10 @@ and post title, body and byline styles */
 	margin: 1%;
 }
 
+#title {
+	font-size: 150%;
+}
+
 #sidebar {
 	margin: 1%;
 }
@@ -209,15 +216,15 @@ and post title, body and byline styles */
   
 #about_body { 
 	float: left;
-	margin: 5% 1% 2% 0%;
-	width: 30%;
+	margin: 2% 1% 2% 0%;
+	width: 25%;
 	max-width: 600px;
 }
  
 #about_title {
   float: left;
   margin: 2% 1.5% 2% 18%;
-  width: 20%;
+  width: 25%;
 }
 
 #form_container {
