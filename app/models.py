@@ -32,14 +32,16 @@ class Post(db.Model):
 	body = db.Column(db.String(5000))
 	timestamp = db.Column(db.DateTime)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+	image_url = db.Column(db.String(500), nullable=True)
 	
-	def __init__(self, title, body, user_id, timestamp=None):
+	def __init__(self, title, body, user_id, image_url, timestamp=None):
 		self.title = title
 		self.body = body
 		self.user_id = user_id
 		if timestamp is None:
 			timestamp = datetime.utcnow()
 		self.timestamp = timestamp
+		self.image_url = image_url
 	
 	def __repr__(self):
 		return '<Post %r>' % (self.title)

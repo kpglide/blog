@@ -78,6 +78,10 @@ and post title, body and byline styles */
 	margin-top: 1.75em;
 }
 
+#post img {
+	max-width: 100%;
+}
+
 /* Styles for main Index page sidebar */
 #sidebar {
 	margin: 1%;

@@ -10,4 +10,6 @@ class LoginForm(Form):
 class PostForm(Form):
 	title = TextField('title', [validators.InputRequired(), validators.Length(min=1, max=140)])
 	body = TextAreaField('body', [validators.InputRequired(), validators.Length(min=1, max=5000)])
+	image_url = TextField('image_url', [validators.Length(max=500)])
+
 	

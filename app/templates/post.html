@@ -17,13 +17,53 @@
 			<p>Body<br> {{form.body(id="body_input")}}<br>
 			{% for error in form.errors.password %}
 			<label id="blog_post_form_error">[{{error}}]</label>
-			{% endfor %}
+			{% endfor %}</p>
+			<p>
+				<p>Add an Image</p>
+					<div>Click the Browse button to upload an image to Amazon S3 and link it to your blog.  Or, if your image is already hosted online, paste a link to it into the field below.</div><br>
+
+					<input type="file" id="file" onchange="s3_upload();"/>
+						<p id="status"></p>
+						<div id="preview"><img></div>
+
+					<div>Image URL {{form.image_url(id="image_url")}}</div>
 			</p>
 		</div>
+
+		<div><input type="submit" value="Submit"></div>
 	
-	<div><input type="submit" value="Submit"></div> 
-	
-	</form>
+
+
 </div>
+
+<script type="text/javascript" src="../static/s3upload.js"></script>
+
+<script type="text/javascript">
+
+function s3_upload(){
+    var status_elem = document.getElementById("status");
+    var url_elem = document.getElementById("image_url");
+    var preview_elem = document.getElementById("preview");
+    var file_elem = document.getElementById("file");
+    var s3upload = new S3Upload({
+        file_dom_selector: 'file',
+        s3_sign_put_url: '/sign_s3/',
+        s3_object_name: file_elem.value,
+
+        onProgress: function(percent, message) {
+            status_elem.innerHTML = 'Upload progress: ' + percent + '% ' + message;
+        },
+        onFinishS3Put: function(url) {
+            status_elem.innerHTML = 'Upload completed. Uploaded to: '+ url;
+            url_elem.value = url;
+            preview_elem.innerHTML = '<img src="'+url+'" style="width:300px;" />';
+        },
+        onError: function(status) {
+            status_elem.innerHTML = 'Upload error: ' + status;
+        }
+    });
+}
+
+</script>
 
 {% endblock %}
