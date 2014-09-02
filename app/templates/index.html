@@ -5,11 +5,11 @@
 <div id="post">
 {% for post in posts.items %}
 	<div id="post_wrapper">
-		<p id="title">{{ post.title }}</p>
 		<p id="byline">
-			By: {{ post.user.username }} on {{ moment(post.timestamp).format('LLL') }}
+			{{ moment(post.timestamp).format('L') }}
 		</p>
-		<p id="post_body">{{post.body }}</p>
+		<p id="title">{{ post.title }}</p>
+		<p id="post_body">{{ post.body }}</p>
 		{% if post.image_url %}
 		<p id="image"><img src="{{ post.image_url }}"></p>
 		{% endif %}
