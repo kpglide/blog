@@ -6,6 +6,7 @@ body {
  	font-size: 100%;
  	margin: 0;
  	background-color: white;
+ 	color: #6D6D6D;
 }
 
 /* Masthead styles */
@@ -13,7 +14,7 @@ body {
 	width: 100%;
 	background-color: gainsboro;
 	height: 20%;
-	padding: .2%;
+	padding: .1% .2% .2% .2%;
 	border-bottom-style: solid;
 	border-bottom-width: thick;
 	border-bottom-color: #7851a9; 
@@ -36,7 +37,7 @@ body {
 }
 
 #masthead a {
-	color: black;
+	color: #3F3F3F;
 }
 
 /* Styles for main Index page, including blog post container,
@@ -52,23 +53,23 @@ and post title, body and byline styles */
 	margin: 1%;
 	line-height: 1.5em;
 	padding: .50em 1em;
-	color: #696969;
 }
 
 #title {
 	font-weight: bold;
-	color: black;
+	color: #3F3F3F;
 	line-height: 25%;
 }
 
 #byline {
-	font-size: 80%;
+	font-size: 90%;
 	margin-top: 1%;
-	margin-bottom: -3%;
+	margin-bottom: -2.5%;
 }
 
 #post_body {
-	margin-top: 1.75em;
+	margin-top: -1%;
+	font-size: 105%
 }
 
 #post img {
@@ -81,16 +82,16 @@ and post title, body and byline styles */
 	line-height: 1.5em;
 	padding: 1em 1em;
 	border-radius: 16px;
-	color: #696969;
 }
 
 #sidebar div {
 	display: inline;
-	border-right-style: solid;
-	border-right-width: 2.5px;
-	padding: 0 4px;
-	color: black;
-	font-size: 110%;
+	border-bottom-style: dotted;
+	border-width: thick; 
+	border-bottom-width: 2.5px;
+	text-align: center;
+	color: #7851a9;
+	font-size: 105%;
 	border-color: #7851a9;
 }
 
@@ -153,13 +154,14 @@ and post title, body and byline styles */
 /* Footer styles */
 #footer {
 	clear: both;
-	width: 100%;
+	width: 101%;
 	background-color: #7851a9;
 	line-height: 175%;
 }
 
 #footer li {
 	display: inline-block;
+	margin-right: 2%;
 }
 
 #footer a {
@@ -208,15 +210,15 @@ and post title, body and byline styles */
 	
 #post { 
 	float: left;
-	margin: 2% 1.5% 2% 15%;
-	width: 56%;
+	margin: 1% 1% 2% 15%;
+	width: 52%;
 	max-width: 850px;
 }
 	
 #sidebar {
   float: left;
-  margin: 2% 1% 2% 0%;
-  width: 10%;
+  margin: 1% 1% 2% 0%;
+  width: 15%;
 }
   
 #about_body { 
