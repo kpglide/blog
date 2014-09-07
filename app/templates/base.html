@@ -23,12 +23,13 @@
 	<body>
 
 	<div id="masthead">
-		<hgroup>
-			<ul>
-				<li><h2><a href="/index">Kevin Glidewell</a></h2></li><br>
-				<li><a href="{{url_for('index')}}">Home</a></li>
-				<li><a href="{{url_for('about')}}">About</a></li>
-			</ul>
+		<ul class="masthead_elements">
+			<li><h2><a href="/index">Kevin Glidewell</a></h2></li><br>
+		</ul>
+		<ul class="masthead_elements masthead_link_list">
+			<li><a href="{{url_for('main.index')}}">Home</a></li>
+			<li><a href="{{url_for('main.about')}}">About</a></li>
+		</ul>
 		</hgroup>
 	</div>
 
@@ -51,7 +52,7 @@
 		<ul id="admin_login">
 		{% if session.logged_in %}
 			<li>
-				<a href="{{ url_for('post') }}">Post</a>
+				<a href="{{ url_for('main.post') }}">Post</a>
 				<a href="/logout">Logout</a>
 			</li>
 		{% else %}

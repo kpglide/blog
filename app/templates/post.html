@@ -11,26 +11,29 @@
 	
 		<div id="blog_post_form">
 			<p>Title<br>{{form.title(id="title_input")}}
-			{% for error in form.errors.username %}
-			<label id="blog_post_form_error">[{{error}}]</label>
-			{% endfor %}</p>
-			<p>Body<br> {{form.body(id="body_input")}}<br>
-			{% for error in form.errors.password %}
-			<label id="blog_post_form_error">[{{error}}]</label>
-			{% endfor %}</p>
+				{% for error in form.errors.username %}
+				<label id="blog_post_form_error">[{{error}}]</label>
+				{% endfor %}</p>
+				<p>Body<br> {{form.body}}<br>
+				{% for error in form.errors.password %}
+				<label id="blog_post_form_error">[{{error}}]</label>
+				{% endfor %}
+			</p>
 			<p>
-				<p>Add an Image</p>
-					<div>Click the Browse button to upload an image to Amazon S3 and link it to your blog.  Or, if your image is already hosted online, paste a link to it into the field below.</div><br>
+				<h3>Add an Image</h3>
+					<div id="image_instructions">Click the Browse button to upload an image to Amazon S3 and link it to your blog.  Or, if your image is already hosted online, paste a link to it into the field below.</div><br>
 
 					<input type="file" id="file" onchange="s3_upload();"/>
 						<p id="status"></p>
 						<div id="preview"><img></div>
 
-					<div>Image URL {{form.image_url(id="image_url")}}</div>
+					<div>Image1 URL {{form.image1_url(class="image_url_input")}}</div>
+					<div>Image2 URL {{form.image2_url(class="image_url_input")}}</div>
+					<div>Image3 URL {{form.image3_url(class="image_url_input")}}</div>
 			</p>
 		</div>
 
-		<div><input type="submit" value="Submit"></div>
+		<div id="submit"><input type="submit" value="Submit Post"></div>
 	
 
 
@@ -65,5 +68,7 @@ function s3_upload(){
 }
 
 </script>
+
+{{ pagedown.include_pagedown() }}
 
 {% endblock %}

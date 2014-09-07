@@ -9,23 +9,36 @@
 			{{ moment(post.timestamp).format('L') }}
 		</p>
 		<p id="title">{{ post.title }}</p>
-		<p id="post_body">{{ post.body }}</p>
-		{% if post.image_url %}
-		<p id="image"><img src="{{ post.image_url }}"></p>
-		{% endif %}
+		<p id="post_body">
+			{% if post.image1_url %}
+				<img src="{{ post.image1_url }}" class="right"/>
+			{% endif %}
+			{% if post.image2_url %}
+				<img src="{{ post.image2_url }}" class="left"/>
+			{% endif %}
+			{% if post.body_html %}
+				{{ post.body_html | safe }}
+			{% else %}
+				{{ post.body }}
+			{% endif %}
+			{% if post.image3_url %}
+				<img src="{{ post.image3_url }}" class="center"/>
+			{% endif %}
+			<div class="spacer"></div>
+		</p>
 		{% if post.user_id == session['user_id'] %}
-		<p><a href="{{ url_for('delete', id = post.id) }}">Delete</a></p>
+		<p><a href="{{ url_for('main.delete', id = post.id) }}">Delete</a></p>
 		{% endif %}
 	</div>
 {% endfor %}
 	
-{% if posts.has_prev %}<a href="{{url_for('index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} |
-{% if posts.has_next %}<a href="{{url_for('index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
+{% if posts.has_prev %}<a href="{{url_for('main.index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} |
+{% if posts.has_next %}<a href="{{url_for('main.index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
 	
 </div>
 
 <div id="sidebar">
-	<p><div>About</div><br> I'm a technology and media lawyer in Atlanta, Georgia.  This is my personal blog.  It's powered by Python and Flask.  Thanks for checking it out.  <a href="{{ url_for('about') }}">More</a></p>
+	<p><div>About</div><br> I'm a technology and media lawyer in Atlanta, Georgia.  This is my personal blog.  It's powered by Python and Flask.  Thanks for checking it out.  <a href="{{ url_for('main.about') }}">More</a></p>
 </div>
 
 {% endblock %}
