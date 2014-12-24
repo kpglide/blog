@@ -23,8 +23,8 @@ def admin():
 		return render_template('admin.html')
 	form = LoginForm()
 	if form.validate_on_submit():
-		user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
-		if user:
+		user = User.query.filter_by(username=form.username.data).first()
+		if user is not None and user.verify_password(form.password.data):
 			session['username'] = user.username
 			session['user_id'] = user.id
 			session['logged_in'] = True

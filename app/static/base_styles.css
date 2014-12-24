@@ -11,10 +11,10 @@ body {
 
 /* Masthead styles */
 #masthead {
-	width: 100%;
+	width: 101%;
 	background-color: gainsboro;
 	height: 20%;
-	padding: .1% .2% .2% 0%;
+	padding: .1% 0% .2% 0%;
 	border-bottom-style: solid;
 	border-bottom-width: thick;
 	border-bottom-color: #7851a9; 
@@ -176,6 +176,10 @@ and post title, body and byline styles */
 	border-top-style: solid;
 	border-top-width: thin;
 	border-color: #7851a9;
+}
+
+.blog_post_form_error {
+	color: red;
 }
 
 /* Styles for About page */

@@ -10,26 +10,72 @@
 	{{ form.hidden_tag() }}
 	
 		<div id="blog_post_form">
-			<p>Title<br>{{form.title(id="title_input")}}
-				{% for error in form.errors.username %}
-				<label id="blog_post_form_error">[{{error}}]</label>
-				{% endfor %}</p>
-				<p>Body<br> {{form.body}}<br>
-				{% for error in form.errors.password %}
-				<label id="blog_post_form_error">[{{error}}]</label>
+			<p>
+				Title
+				{% for error in form.errors.title %}
+				<label class="blog_post_form_error">{{error}}</label>
 				{% endfor %}
+				<br><br>{{form.title(id="title_input")}}
+			</p>
+			<p>
+				Body
+				{% for error in form.errors.body %}
+				<label class="blog_post_form_error">{{error}}</label>
+				{% endfor %}
+				<br>{{form.body}}
 			</p>
 			<p>
 				<h3>Add an Image</h3>
-					<div id="image_instructions">Click the Browse button to upload an image to Amazon S3 and link it to your blog.  Or, if your image is already hosted online, paste a link to it into the field below.</div><br>
+					<div id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</div><br>
 
-					<input type="file" id="file" onchange="s3_upload();"/>
-						<p id="status"></p>
-						<div id="preview"><img></div>
+				
+					<div>
 
-					<div>Image1 URL {{form.image1_url(class="image_url_input")}}</div>
-					<div>Image2 URL {{form.image2_url(class="image_url_input")}}</div>
-					<div>Image3 URL {{form.image3_url(class="image_url_input")}}</div>
+						Image 1<br><br>
+
+						<div class="image_input_div">
+
+							<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');"/>
+							<p id="status1"></p>
+							<div id="preview1"><img></div>
+
+							url {{form.image1_url(class="image_url_input")}}
+
+						</div>
+
+					</div><br>
+
+					<div>
+
+						Image 2<br><br>
+
+						<div class="image_input_div">
+
+							<input type="file" id="file2" onchange="s3_upload('file2', 'image2_url', 'status2', 'preview2');"/>
+							<p id="status2"></p>
+							<div id="preview2"><img></div>
+
+							url {{form.image2_url(class="image_url_input")}}
+
+						</div>
+
+					</div><br>
+
+					<div>
+
+						Image 3<br><br>
+
+						<div class="image_input_div">
+
+							<input type="file" id="file3" onchange="s3_upload('file3', 'image3_url', 'status3', 'preview3');"/>
+							<p id="status3"></p>
+							<div id="preview"><img></div>
+
+							url {{form.image3_url(class="image_url_input")}}
+
+						</div>
+
+					</div>
 			</p>
 		</div>
 
@@ -43,13 +89,13 @@
 
 <script type="text/javascript">
 
-function s3_upload(){
-    var status_elem = document.getElementById("status");
-    var url_elem = document.getElementById("image_url");
-    var preview_elem = document.getElementById("preview");
-    var file_elem = document.getElementById("file");
+function s3_upload(id, url_elem, status_elem, preview_elem){
+    var status_elem = document.getElementById(status_elem);
+    var url_elem = document.getElementById(url_elem);
+    var preview_elem = document.getElementById(preview_elem);
+    var file_elem = document.getElementById(id);
     var s3upload = new S3Upload({
-        file_dom_selector: 'file',
+        file_dom_selector: id,
         s3_sign_put_url: '/sign_s3/',
         s3_object_name: file_elem.value,
 

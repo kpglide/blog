@@ -5,13 +5,13 @@ from flask.ext.pagedown.fields import PageDownField
 
 #Represents a form for logging in
 class LoginForm(Form):
-	username = TextField('username', [validators.InputRequired(), validators.Length(min=4, max=15)])
-	password = TextField('password', [validators.InputRequired(), validators.Length(min=8, max=15)])
+	username = TextField('username', [validators.InputRequired()])
+	password = TextField('password', [validators.InputRequired()])
 
 #Represents a form for creating blog posts	
 class PostForm(Form):
-	title = TextField('title', [validators.InputRequired(), validators.Length(min=1, max=140)])
-	body = PageDownField('body', [validators.InputRequired()])
+	title = TextField('title', [validators.InputRequired('*You must include a title*'), validators.Length(min=1, max=140)])
+	body = PageDownField('body', [validators.InputRequired('*You must include a body*')])
 	image1_url = TextField('image1_url', [validators.Length(max=500)])
 	image2_url = TextField('image2_url', [validators.Length(max=500)])
 	image3_url = TextField('image3_url', [validators.Length(max=500)])
