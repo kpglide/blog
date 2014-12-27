@@ -4,8 +4,8 @@ from wtforms import BooleanField, TextField, TextAreaField, PasswordField, \
 
 #Represents a form for logging in
 class LoginForm(Form):
-	username = TextField('username', [validators.InputRequired(), validators.Length(min=4, max=15)])
-	password = PasswordField('password', [validators.InputRequired(), validators.Length(min=8, max=15)])
+	username = TextField('username', [validators.InputRequired()])
+	password = PasswordField('password', [validators.InputRequired()])
 	remember_me = BooleanField('Keep me logged in')
 
 	

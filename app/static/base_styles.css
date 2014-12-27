@@ -130,7 +130,7 @@ and post title, body and byline styles */
 }
 
 /* Additional styles for Admin page, including login form */
-#admin_login {
+#admin_links {
 	text-align: right;
 	padding-right: 2%;
 }

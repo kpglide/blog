@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if current_user.is_authenticated %}
+{% if current_user.is_authenticated() %}
 <div>
 	<p>Hello {{ current_user.username }}</p>
 </div>
@@ -31,6 +31,7 @@
 				<label id="login_form_error">{{error}}</label>
 				{% endfor %}
 			</p>
+			<p>Remember me {{form.remember_me}}</p>
 		</div>
 		<div><input type="submit" value="Sign In"></div> 
 	</form>

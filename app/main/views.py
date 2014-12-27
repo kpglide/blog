@@ -2,10 +2,11 @@ from .. import db
 from flask import render_template, flash, url_for, redirect, session, request,\
 					current_app, make_response, Response
 from . import main
-from .forms import LoginForm, PostForm
+from .forms import PostForm
 from ..models import User, Post
 import time, os, json, base64, hmac, urllib
 from hashlib import sha1
+from flask.ext.login import login_required
 
 #Display home page showing a paginated list of blog posts
 @main.route('/')
@@ -15,24 +16,6 @@ def index(page = 1, type=int):
 	posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, 
 								per_page=current_app.config['POSTS_PER_PAGE'])
 	return render_template('index.html', posts=posts)
-
-#Display admin page where registered users are able to login
-@main.route('/admin', methods=['GET', 'POST'])
-def admin():
-	if 'logged_in' in session:
-		return render_template('admin.html')
-	form = LoginForm()
-	if form.validate_on_submit():
-		user = User.query.filter_by(username=form.username.data).first()
-		if user is not None and user.verify_password(form.password.data):
-			session['username'] = user.username
-			session['user_id'] = user.id
-			session['logged_in'] = True
-			return redirect(url_for('.post'))
-		else:
-			flash('Sorry, you are not registered.  Please contact the site owner to register.')
-			return render_template('admin.html', form=form)
-	return render_template('admin.html', form=form)
 
 @main.route('/logout')
 def logout():
@@ -44,9 +27,8 @@ def logout():
 
 #Display post page where a logged in user may draft and submit a blog post	
 @main.route('/post', methods=['GET', 'POST'])
+@login_required
 def post():
-	if 'logged_in' not in session:
-		return redirect(url_for('.admin'))
 	form = PostForm()
 	user_id = session['user_id'] 
 	if form.validate_on_submit():
