@@ -2,43 +2,48 @@
 
 {% block content %}
 
-<div class="form_container">
+<div id="form_container">
 	
-	<h3>Create a Post</h3>
+	<h3>Edit a Post</h3>
 	
 	<form action="" method="post" name="blog_post_form">
 	{{ form.hidden_tag() }}
 	
-	<ul id="blog_post_form">
-		<li>
-			<label for="form-title">Title</label>
-			{% for error in form.errors.title %}
-			<label class="blog_post_form_error">{{error}}</label>
-			{% endfor %}
-			{{form.title(id="title_input")}}
-		</li>
-			
-		<li>
-			<label for="form-body">Body</label>
-			{% for error in form.errors.body %}
-			<label class="blog_post_form_error">{{error}}</label>
-			{% endfor %}
-			{{form.body}}
-		</li>
-				
-		<li><h3>Add an Image</h3></li>
-
-		<li id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</li>
+		<div id="blog_post_form">
+			<p>
+				Title
+				{% for error in form.errors.title %}
+				<label class="blog_post_form_error">{{error}}</label>
+				{% endfor %}
+				<br><br>{{form.title(id="title_input")}}
+			</p>
+			<p>
+				Body
+				{% for error in form.errors.body %}
+				<label class="blog_post_form_error">{{error}}</label>
+				{% endfor %}
+				<br>{{form.body}}
+			</p>
+			<p>
+				<h3>Add an Image</h3>
+					<div id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</div><br>
 
 				
-		<li><h4>Image 1</h4></li>
-		<li>
-			<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');" class="image_input">
-		</li>
-		<li id="status1" class="image_status"></li>
-		<li id="preview1"><img></li>
+					<div>
 
-		<li class="image_url">url {{form.image1_url(class="image_url_input")}}</li>
+						Image 1<br><br>
+
+						<div class="image_input_div">
+
+							<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');"/>
+							<p id="status1"></p>
+							<div id="preview1"><img></div>
+
+							url {{form.image1_url(class="image_url_input")}}
+
+						</div>
+
+					</div><br>
 
 					<div>
 
@@ -71,16 +76,13 @@
 						</div>
 
 					</div>
-			</ul>
-
+			</p>
 		</div>
 
-		<ul class="myButton">
-			<li class="myButton">
-				<input type="submit" value="Submit Post">
-			</li>
-		</ul>
-	</ul>
+		<div id="submit"><input type="submit" value="Submit Post"></div>
+	
+
+
 </div>
 
 <script type="text/javascript" src="../static/s3upload.js"></script>

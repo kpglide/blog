@@ -1,5 +1,5 @@
 from flask import render_template, flash, url_for, redirect, request
-from flask.ext.login import login_user
+from flask.ext.login import login_user, logout_user
 from . import auth
 from .. models import User
 from .forms import LoginForm
@@ -16,3 +16,9 @@ def admin():
 		else:
 			flash('Sorry, you are not registered.  Please contact the site owner to register.')
 	return render_template('auth/admin.html', form=form)
+
+@auth.route('/logout')
+def logout():
+	logout_user()
+	flash('You were logged out')
+	return redirect(url_for('main.index'))

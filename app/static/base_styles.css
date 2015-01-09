@@ -1,17 +1,27 @@
 @charset "UTF-8";
 /* CSS Document */
 
+html {
+	height: 96%;
+}
+
 body {
 	font-family: Trebuchet MS, Helvetica, sans-serif;
  	font-size: 100%;
  	margin: 0;
  	background-color: white;
  	color: #6D6D6D;
+ 	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -30px 0;
 }
 
 /* Masthead styles */
 #masthead {
-	width: 101%;
+	width: 100%;
 	background-color: gainsboro;
 	height: 20%;
 	padding: .1% 0% .2% 0%;
@@ -63,13 +73,21 @@ and post title, body and byline styles */
 	border-bottom-color: #7851a9;
 	clear: both;
 	line-height: 1.5em;
-	padding: .50em 1em;
+	padding: .50em 0 .50em 1em;
 }
 
 #title {
-	font-weight: bold;
-	color: #3F3F3F;
 	line-height: 25%;
+	color: #7851a9;
+}
+
+#title a {
+	text-decoration: none;
+	color: #7851a9;
+}
+
+#title a:hover {
+	color: #AD33AD; 
 }
 
 #byline {
@@ -86,13 +104,13 @@ and post title, body and byline styles */
 .right {
 	float: right;
 	margin: 0 1%;
-	max-width: 35%;
+	max-width: 45%;
 }
 
 .left {
 	float: left;
 	margin: 1%;
-	max-width: 35%;
+	max-width: 45%;
 	clear: right;
 }
 
@@ -102,12 +120,63 @@ and post title, body and byline styles */
 	margin-right: auto;
 	margin-top: 1%;
 	margin-bottom: 1%;
-	max-width: 42%;
+	max-width: 50%;
 	clear: both;
 }
 
 .spacer {
 	clear: both;
+}
+
+.post_footer {
+	text-align: right;
+	font-size: 80%;
+	margin-bottom: -2%;
+}
+
+.post_footer li {
+	display: inline-block;
+}
+
+.pagination {
+	text-align: left;
+	margin-left: -20px;
+}
+
+.pagination li {
+	display: inline-block;
+}
+
+div.pagination a {
+	text-decoration: underline;
+}
+
+div.pagination a:hover{
+	border: 1px solid #000099;
+
+	color: #000;
+}
+	
+div.pagination a:active {
+	border: 1px solid #7851a9;
+
+	color: #f00;
+}
+
+div.pagination span.current_item {
+		padding: 1px 2px 1px 2px;
+		margin: 1px;
+		border: .5px solid #fff;
+		
+		font-weight: bold;
+		background-color: #fff;
+		color: #000;
+}
+
+div.pagination span.disabled_item {
+		border: .5px solid #EEE;
+	
+		color: #DDD;
 }
 
 /* Styles for main Index page sidebar */
@@ -130,13 +199,9 @@ and post title, body and byline styles */
 }
 
 /* Additional styles for Admin page, including login form */
-#admin_links {
-	text-align: right;
-	padding-right: 2%;
-}
-
-#form_container {
-	margin-left: 10%;
+.form_container {
+	margin: 0 1% 1% 1%;	
+	padding: 1em 1em;
 }
 
 #login_form_error {
@@ -170,16 +235,16 @@ and post title, body and byline styles */
 	width: 38%;
 }
 
-#submit {
-	padding: 1%;
-	max-width: 49%;
-	border-top-style: solid;
-	border-top-width: thin;
-	border-color: #7851a9;
-}
-
 .blog_post_form_error {
 	color: red;
+}
+
+#blog_post_form {
+	list-style-type: none;
+}
+
+#blog_post_form li {
+	display: block;
 }
 
 /* Styles for About page */
@@ -214,20 +279,27 @@ and post title, body and byline styles */
 }
 
 /* Footer styles */
-#footer {
+.footer, .push {
 	clear: both;
-	width: 101%;
+}
+
+#footer {
+	height: 30px;
 	background-color: #7851a9;
-	line-height: 175%;
 }
 
 #footer li {
 	display: inline-block;
-	margin-right: 2%;
 }
 
 #footer a {
 	color: #b2b2cc;
+}
+
+#admin_links {
+	text-align: right;
+	padding-right: 4%;
+	padding-top: 5px;
 }
 
 /* Flashed message styling */
@@ -245,6 +317,29 @@ and post title, body and byline styles */
 /* Styles for error pages */
 .error {
 	text-align: center;
+}
+
+/* Styles for buttons */
+input[type="submit"] {
+    display: block;
+    height: 2em;
+    width: 10em;
+    background: gainsboro;
+    border: 1px solid #b2b2cc;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,.5);
+    color: black;
+    font-size: 75%;
+}
+
+input[type="file"] {
+    height: 2em;
+    width: 50em;
+    background: gainsboro;
+    border: 1px solid #b2b2cc;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,.5);
+    color: black;
 }
 
 /* Styles rules for screens @ least 481px */
@@ -265,24 +360,31 @@ and post title, body and byline styles */
 /* Style rules for screens @ least 780 px */
 @media screen and (min-width: 780px) {
 
+#container {
+	margin: 0 auto 2px auto;
+	width: 800px;
+}
+
 .masthead_elements { 
-	margin-top: 1%;
-	margin-right: 0%;
-	margin-bottom: 8.5px;
-	margin-left: 16%;
+	margin: 1% 1% 8.5px 1%;
 }
 	
 #post { 
 	float: left;
-	margin: 1% 1% 2% 16%;
-	width: 52%;
+	margin: 1% 1% 8.5px 1%;
+	width: 70%;
 	max-width: 850px;
+}
+
+.pagination {
+	text-align: center;
+	margin-right: 8%;
 }
 	
 #sidebar {
   float: left;
-  margin: 1% 1% 2% 0%;
-  width: 15%;
+  margin: 1%;
+  width: 20%;
 }
   
 #about_body { 
@@ -298,10 +400,6 @@ and post title, body and byline styles */
   width: 25%;
 }
 
-#form_container {
-	margin: 2% 0% 2% 18%;
-}
- 
-#footer {
-	 clear: both;
+.form_container {
+	margin-left: 16.5%;
 }

@@ -6,24 +6,24 @@ from .forms import PostForm
 from ..models import User, Post
 import time, os, json, base64, hmac, urllib
 from hashlib import sha1
-from flask.ext.login import login_required
+from flask.ext.login import login_required, current_user
 
 #Display home page showing a paginated list of blog posts
 @main.route('/')
 @main.route('/index')
 @main.route('/index/<int:page>')
-def index(page = 1, type=int):
-	posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, 
+def index(page=1, type=int):
+	page = request.args.get('page', page, type)
+	pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, 
 								per_page=current_app.config['POSTS_PER_PAGE'])
-	return render_template('index.html', posts=posts)
+	posts = pagination.items
+	return render_template('index.html', posts=posts, pagination=pagination)
 
-@main.route('/logout')
-def logout():
-	session.pop('logged_in', None)
-	session.pop('user_id', None)
-	session.pop('username', None)
-	flash('You were logged out')
-	return redirect(url_for('.index'))
+#Display unique page for each post
+@main.route('/single_post/<int:id>')
+def single_post(id):
+	entry = Post.query.get_or_404(id)
+	return render_template('index.html', posts=[entry], single_post=True)
 
 #Display post page where a logged in user may draft and submit a blog post	
 @main.route('/post', methods=['GET', 'POST'])
@@ -41,6 +41,30 @@ def post():
 		flash('Your post is now live.')
 		return redirect('index')
 	return render_template('post.html', form=form)
+
+@main.route('/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit(id):
+	post = Post.query.get_or_404(id)
+	if current_user.id != post.user_id:
+		return redirect(url_for('.index'))
+	form = PostForm()
+	if form.validate_on_submit():
+		post.title = form.title.data
+		post.body = form.body.data 
+		post.image1_url = form.image1_url.data
+		post.image2_url = form.image2_url.data 
+		post.image3_url = form.image3_url.data
+		db.session.add(post)
+		flash('The post has been updated')
+		return redirect(url_for('.single_post', id=post.id))
+	form.title.data = post.title
+	form.body.data = post.body
+	form.image1_url.data = post.image1_url
+	form.image2_url.data = post.image2_url
+	form.image3_url.data = post.image3_url
+	return render_template('edit_post.html', form=form)
+
 
 @main.route('/sign_s3/')
 def sign_s3():
@@ -70,14 +94,13 @@ def sign_s3():
 	
 #Delete a blog post
 @main.route('/delete/<int:id>')
+@login_required
 def delete(id):
-	if 'logged_in' not in session:
-		return redirect(url_for('.index'))
 	post = Post.query.get(id)
 	if post == None:
 		flash('Post not found.')
 		return redirect(url_for('.index'))
-	if post.user_id != session['user_id']:
+	if post.user_id != current_user.id:
 		flash('You do not have rights to delete this post.')
 		return redirect(url_for('.index'))
 	db.session.delete(post)
@@ -89,3 +112,5 @@ def delete(id):
 @main.route('/about')
 def about():
 	return render_template('about.html')
+
+

@@ -1,0 +1,32 @@
+{% macro pagination_widget(pagination, endpoint) %}
+<ul>
+	{% if pagination.has_prev %}
+	<li><a href="{{ url_for(endpoint, page = pagination.page - 1, **kwargs) }}">&laquo; Prev</a></li>
+	{% else %}
+	<li>&laquo; Prev</li>
+	{% endif %}
+	
+	{% for p in pagination.iter_pages() %}
+		{% if p %}
+			{% if p == pagination.page %}
+				<span class="current_item"><li>
+					<a href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+				</li></span>
+			{% else %}
+				<span class="disabled_item"><li>
+					<a href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p}}</a>
+				</li></span>
+			{% endif %}
+		{% else %}
+			<li><a href="#">&hellip;</a></li>
+		{% endif %}
+	{% endfor %}
+	
+	{% if pagination.has_next %}
+	<li><a href="{{ url_for(endpoint, page = pagination.page + 1, **kwargs) }}">Next &raquo;</a></li>
+	{% else %}
+	<li>Next &raquo;</li>
+	{% endif %}
+	</li>
+</ul>
+{% endmacro %}

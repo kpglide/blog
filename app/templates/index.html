@@ -1,14 +1,21 @@
 {% extends "base.html" %}
+{% import "_macros.html" as macros %}
 
 {% block content %}
 
 <div id="post">
-{% for post in posts.items %}
+{% for post in posts %}
 	<div id="post_wrapper">
 		<p id="byline">
 			{{ moment(post.timestamp).format('L') }}
 		</p>
-		<p id="title">{{ post.title }}</p>
+		<p id="title">
+			{% if not single_post %}
+			<a href="{{ url_for('.single_post', id=post.id) }}">{{ post.title }}</a>
+			{% else %}
+			<span class="title_no_link">{{ post.title }}</span>
+			{% endif %}
+		</p>
 		<p id="post_body">
 			{% if post.image1_url %}
 				<img src="{{ post.image1_url }}" class="right"/>
@@ -26,20 +33,32 @@
 			{% endif %}
 			<div class="spacer"></div>
 		</p>
-		{% if post.user_id == session['user_id'] %}
-		<p><a href="{{ url_for('main.delete', id = post.id) }}">Delete</a></p>
-		{% endif %}
+		<div class="post_footer">
+			<ul>
+				{% if current_user.is_authenticated() %}
+					{% if current_user.id == post.user_id %}
+					<li>
+						<a href="{{ url_for('main.edit', id = post.id) }}">Edit</a>
+						<a href="{{ url_for('main.delete', id = post.id) }}">Delete</a>
+					</li>
+ 					{% endif %}
+ 				{% endif %}
+ 		</div>
 	</div>
 {% endfor %}
-	
-{% if posts.has_prev %}<a href="{{url_for('main.index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} |
-{% if posts.has_next %}<a href="{{url_for('main.index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
-	
+
+	<div class="pagination">
+		{% if pagination %}
+			{{ macros.pagination_widget(pagination, '.index') }}
+		{% endif %}
+	</div>
+
 </div>
 
 <div id="sidebar">
 	<p><div>About</div><br> I'm a technology and media lawyer in Atlanta, Georgia.  This is my personal blog.  It's powered by Python and Flask.  Thanks for checking it out.  <a href="{{ url_for('main.about') }}">More</a></p>
+	<br>
+	<p>
 </div>
 
 {% endblock %}
-

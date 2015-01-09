@@ -21,7 +21,10 @@
 	</head>
 	
 	<body>
+	
+	<div class="wrapper">
 
+	<div id="container">
 	<div id="masthead">
 		<ul class="masthead_elements">
 			<li><h2><a href="/index">Kevin Glidewell</a></h2></li><br>
@@ -48,6 +51,10 @@
 {% block content %}
 {% endblock %}
 	
+	</div>
+	<div class="push"></div>
+	</div>
+
 	<footer id="footer">
 		<ul id="admin_links">
 			{% if not current_user.is_authenticated() %}
@@ -55,7 +62,7 @@
 			{% else %}
 			<li>
 				<a href="{{ url_for('main.post') }}">Post</a>
-				<a href="/logout">Logout</a>
+				<a href="{{ url_for('auth.logout') }}">Logout</a>
 			</li>
 			{% endif %}
 		</ul>
