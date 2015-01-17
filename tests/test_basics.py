@@ -1,9 +1,11 @@
 import unittest
 from datetime import datetime
-from flask import current_app
+from flask import current_app, url_for
 from app import create_app, db
 from app.models import User, Post
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask.ext.login import login_required, current_user
+from flask.ext.login import login_user, logout_user
 
 class TestCase(unittest.TestCase):
 
@@ -20,13 +22,13 @@ class TestCase(unittest.TestCase):
         self.app_context.pop()
 
     def login(self, username, password):
-        return self.client.post('/admin', data={
+        return self.client.post(url_for('auth.admin'), data={
 			'username': username,
 			'password': password
         }, follow_redirects=True)
 
     def logout(self):
-        return self.client.get('/logout', follow_redirects=True)
+        return self.client.get(url_for('auth.logout'), follow_redirects=True)
 		
     def post(self, title, body):
         return self.client.post('/post', data={
@@ -67,7 +69,7 @@ class TestCase(unittest.TestCase):
     def test_login(self):
         self.create_user()
         response = self.login(username='testtest', password='password')
-        assert 'Post' in response.data
+        assert 'Logout' in response.data
 
     def test_invalid_login(self):
         response = self.login(username='invalid', password='invalidpassword')

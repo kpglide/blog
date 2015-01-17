@@ -3,84 +3,70 @@
 {% block content %}
 
 <div class="form_container">
-	
-	<h3>Create a Post</h3>
-	
+		
 	<form action="" method="post" name="blog_post_form">
 	{{ form.hidden_tag() }}
 	
-	<ul id="blog_post_form">
-		<li>
-			<label for="form-title">Title</label>
-			{% for error in form.errors.title %}
-			<label class="blog_post_form_error">{{error}}</label>
-			{% endfor %}
-			{{form.title(id="title_input")}}
-		</li>
-			
-		<li>
-			<label for="form-body">Body</label>
-			{% for error in form.errors.body %}
-			<label class="blog_post_form_error">{{error}}</label>
-			{% endfor %}
-			{{form.body}}
-		</li>
-				
-		<li><h3>Add an Image</h3></li>
-
-		<li id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</li>
-
-				
-		<li><h4>Image 1</h4></li>
-		<li>
-			<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');" class="image_input">
-		</li>
-		<li id="status1" class="image_status"></li>
-		<li id="preview1"><img></li>
-
-		<li class="image_url">url {{form.image1_url(class="image_url_input")}}</li>
-
-					<div>
-
-						Image 2<br><br>
-
-						<div class="image_input_div">
-
-							<input type="file" id="file2" onchange="s3_upload('file2', 'image2_url', 'status2', 'preview2');"/>
-							<p id="status2"></p>
-							<div id="preview2"><img></div>
-
-							url {{form.image2_url(class="image_url_input")}}
-
-						</div>
-
-					</div><br>
-
-					<div>
-
-						Image 3<br><br>
-
-						<div class="image_input_div">
-
-							<input type="file" id="file3" onchange="s3_upload('file3', 'image3_url', 'status3', 'preview3');"/>
-							<p id="status3"></p>
-							<div id="preview"><img></div>
-
-							url {{form.image3_url(class="image_url_input")}}
-
-						</div>
-
-					</div>
-			</ul>
-
-		</div>
-
-		<ul class="myButton">
-			<li class="myButton">
-				<input type="submit" value="Submit Post">
+		<ul id="blog_post_form">
+			<li><h3>Create a Post</h3></li>
+			<li>
+				<label for="form-title">Title</label>
+				{% for error in form.errors.title %}
+				<label class="blog_post_form_error">{{error}}</label>
+				{% endfor %}
+				<br>{{ form.title(id="title_input") }}
 			</li>
+			
+			<li>
+				<label for="form-body">Body</label>
+				{% for error in form.errors.body %}
+				<label class="blog_post_form_error">{{ error }}</label>
+				{% endfor %}
+				<br>{{ form.body }}
+			</li>
+				
+			<li><h3>Add an Image</h3></li>
+
+			<li id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</li>
+			
+			<li><h4>Image 1</h4></li>
+
+			<li>
+				<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');" class="image_input">
+				<p id="status1" class="image_status"></p>
+				<p id="preview1"><img></p>
+			</li>
+
+			<li class="image_url">url {{form.image1_url(class="image_url_input")}}</li>
+
+			<li><h4>Image 2<h4></li>
+
+			<li>
+				<input type="file" id="file2" onchange="s3_upload('file2', 'image2_url', 'status2', 'preview2');"/>
+				<p id="status2"></p>
+				<p id="preview2"><img></p>
+			</li>
+
+			<li class="image_ul">url {{form.image2_url(class="image_url_input")}}</li>
+
+			<li>Image 3<br></li>
+
+			<li>
+
+			<input type="file" id="file3" onchange="s3_upload('file3', 'image3_url', 'status3', 'preview3');"/>
+			<p id="status3"></p>
+			<p id="preview"><img></p>
+
+			<li class="image_url">url {{form.image3_url(class="image_url_input")}}</li>
+
+			<li class="myButton">
+				<input type="submit" id="post_form_submit" value="Submit Post">
+			</li>
+
 		</ul>
-	</ul>
+	
+	</form>
+
 </div>
 
 <script type="text/javascript" src="../static/s3upload.js"></script>

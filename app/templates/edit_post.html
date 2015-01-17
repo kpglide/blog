@@ -2,86 +2,70 @@
 
 {% block content %}
 
-<div id="form_container">
-	
-	<h3>Edit a Post</h3>
-	
+<div class="form_container">
+		
 	<form action="" method="post" name="blog_post_form">
 	{{ form.hidden_tag() }}
 	
-		<div id="blog_post_form">
-			<p>
-				Title
+		<ul id="blog_post_form">
+			<li><h3>Create a Post</h3></li>
+			<li>
+				<label for="form-title">Title</label>
 				{% for error in form.errors.title %}
 				<label class="blog_post_form_error">{{error}}</label>
 				{% endfor %}
-				<br><br>{{form.title(id="title_input")}}
-			</p>
-			<p>
-				Body
+				<br>{{ form.title(id="title_input") }}
+			</li>
+			
+			<li>
+				<label for="form-body">Body</label>
 				{% for error in form.errors.body %}
-				<label class="blog_post_form_error">{{error}}</label>
+				<label class="blog_post_form_error">{{ error }}</label>
 				{% endfor %}
-				<br>{{form.body}}
-			</p>
-			<p>
-				<h3>Add an Image</h3>
-					<div id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</div><br>
-
+				<br>{{ form.body }}
+			</li>
 				
-					<div>
+			<li><h3>Add an Image</h3></li>
 
-						Image 1<br><br>
+			<li id="image_instructions">Paste your image's URL into the blank, or upload a new image by clicking Browse</li>
+			
+			<li><h4>Image 1</h4></li>
 
-						<div class="image_input_div">
+			<li>
+				<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');" class="image_input">
+				<p id="status1" class="image_status"></p>
+				<p id="preview1"><img></p>
+			</li>
 
-							<input type="file" id="file1" onchange="s3_upload('file1', 'image1_url', 'status1', 'preview1');"/>
-							<p id="status1"></p>
-							<div id="preview1"><img></div>
+			<li class="image_url">url {{form.image1_url(class="image_url_input")}}</li>
 
-							url {{form.image1_url(class="image_url_input")}}
+			<li><h4>Image 2<h4></li>
 
-						</div>
+			<li>
+				<input type="file" id="file2" onchange="s3_upload('file2', 'image2_url', 'status2', 'preview2');"/>
+				<p id="status2"></p>
+				<p id="preview2"><img></p>
+			</li>
 
-					</div><br>
+			<li class="image_ul">url {{form.image2_url(class="image_url_input")}}</li>
 
-					<div>
+			<li>Image 3<br></li>
 
-						Image 2<br><br>
+			<li>
 
-						<div class="image_input_div">
+			<input type="file" id="file3" onchange="s3_upload('file3', 'image3_url', 'status3', 'preview3');"/>
+			<p id="status3"></p>
+			<p id="preview"><img></p>
 
-							<input type="file" id="file2" onchange="s3_upload('file2', 'image2_url', 'status2', 'preview2');"/>
-							<p id="status2"></p>
-							<div id="preview2"><img></div>
+			<li class="image_url">url {{form.image3_url(class="image_url_input")}}</li>
 
-							url {{form.image2_url(class="image_url_input")}}
+			<li class="myButton" id="post_form_submit">
+				<input type="submit" value="Submit Post" class="confirmation">
+			</li>
 
-						</div>
-
-					</div><br>
-
-					<div>
-
-						Image 3<br><br>
-
-						<div class="image_input_div">
-
-							<input type="file" id="file3" onchange="s3_upload('file3', 'image3_url', 'status3', 'preview3');"/>
-							<p id="status3"></p>
-							<div id="preview"><img></div>
-
-							url {{form.image3_url(class="image_url_input")}}
-
-						</div>
-
-					</div>
-			</p>
-		</div>
-
-		<div id="submit"><input type="submit" value="Submit Post"></div>
+		</ul>
 	
-
+	</form>
 
 </div>
 

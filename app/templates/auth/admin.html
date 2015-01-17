@@ -2,25 +2,26 @@
 
 {% block content %}
 
-{% if current_user.is_authenticated() %}
-<div>
-	<p>Hello {{ current_user.username }}</p>
-</div>
-
-<div>
-	<p><a href='/post'>Post</a></p>
-</div>
-
-<div>
-	<p><a href='/logout'>Logout</a></p>
-</div>
-
-{% else %}
 <div class="form_container">
-	<h3>Registered Users Login Here</h3>
+	{% if current_user.is_authenticated() %}
+	<div>
+		<p>Hello {{ current_user.username }}</p>
+	</div>
+
+	<div>
+		<p><a href='/post'>Post</a></p>
+	</div>
+
+	<div>
+		<p><a href='/logout'>Logout</a></p>
+	</div>
+
+	{% else %}
+
 	<form action="" method="post" name="login">
 		{{ form.hidden_tag() }}
 		<div id="login_form">
+			<h3>Registered Users Login Here</h3>
 			<p>Username {{form.username}}<br>
 				{% for error in form.errors.username %}
 				<label id="login_form_error">{{error}}</label>
@@ -33,7 +34,7 @@
 			</p>
 			<p class="remember_me_box">Remember me {{form.remember_me}}</p>
 		</div>
-		<div><input type="submit" value="Sign In"></div> 
+		<div><input type="submit" id="login_form_submit" value="Sign In"></div> 
 	</form>
 </div>
 {% endif %}

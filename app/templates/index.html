@@ -5,7 +5,7 @@
 
 <div id="post">
 {% for post in posts %}
-	<div id="post_wrapper">
+	<div class="post_wrapper {% if single_post %}post_wrapper_no_border{% endif %}">
 		<p id="byline">
 			{{ moment(post.timestamp).format('L') }}
 		</p>
@@ -29,7 +29,7 @@
 				{{ post.body }}
 			{% endif %}
 			{% if post.image3_url %}
-				<img src="{{ post.image3_url }}" class="center"/>
+				<img src="{{ post.image3_url }}" class="center {% if single_post %}center_image_extra_bottom_margin{% endif %}"/>
 			{% endif %}
 			<div class="spacer"></div>
 		</p>
@@ -39,7 +39,7 @@
 					{% if current_user.id == post.user_id %}
 					<li>
 						<a href="{{ url_for('main.edit', id = post.id) }}">Edit</a>
-						<a href="{{ url_for('main.delete', id = post.id) }}">Delete</a>
+						<a href="{{ url_for('main.delete', id = post.id) }}" class="confirmation">Delete</a>
 					</li>
  					{% endif %}
  				{% endif %}
@@ -56,9 +56,7 @@
 </div>
 
 <div id="sidebar">
-	<p><div>About</div><br> I'm a technology and media lawyer in Atlanta, Georgia.  This is my personal blog.  It's powered by Python and Flask.  Thanks for checking it out.  <a href="{{ url_for('main.about') }}">More</a></p>
-	<br>
-	<p>
+	<div>About</div><br> Kevin Glidewell is a technology and media lawyer living in Atlanta, Georgia. <a href="{{ url_for('main.about') }}">More</a>
 </div>
 
 {% endblock %}

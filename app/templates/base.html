@@ -24,18 +24,19 @@
 	
 	<div class="wrapper">
 
-	<div id="container">
 	<div id="masthead">
+		<div>
 		<ul class="masthead_elements">
 			<li><h2><a href="/index">Kevin Glidewell</a></h2></li><br>
 		</ul>
-		<ul class="masthead_elements masthead_link_list">
+		<ul class="masthead_elements">
 			<li><a href="{{url_for('main.index')}}">Home</a></li>
 			<li><a href="{{url_for('main.about')}}">About</a></li>
 		</ul>
-		</hgroup>
+		</div>
 	</div>
 
+	<div id="container">
 	<div id="flashed_messages">
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -68,5 +69,7 @@
 		</ul>
 	</footer>
 	
+	<script type="text/javascript" src="{{ url_for('static', filename='confirm.js') }}"></script>
+
 	</body>
 </html>

@@ -30,7 +30,7 @@ def single_post(id):
 @login_required
 def post():
 	form = PostForm()
-	user_id = session['user_id'] 
+	user_id = current_user.id 
 	if form.validate_on_submit():
 		post = Post(title=form.title.data, body=form.body.data, 
 					user_id=user_id, image1_url=form.image1_url.data,
@@ -39,7 +39,7 @@ def post():
 		db.session.add(post)
 		db.session.commit()
 		flash('Your post is now live.')
-		return redirect('index')
+		return redirect(url_for('.index'))
 	return render_template('post.html', form=form)
 
 @main.route('/edit/<int:id>', methods=['GET', 'POST'])
@@ -112,5 +112,15 @@ def delete(id):
 @main.route('/about')
 def about():
 	return render_template('about.html')
+
+@main.route('/shutdown')
+def server_shutdown():
+	if not current_app.testing:
+		abort(404)
+	shutdown = request.environ.get('werkzeug.server.shutdown')
+	if not shutdown:
+		abort(500)
+	shutdown()
+	return 'Shutting down...'
 
 

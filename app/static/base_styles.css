@@ -33,7 +33,6 @@ body {
 .masthead_elements {
 	margin-top: 1%;
 	margin-left: 1%;
-	margin-right: 1%;
 	margin-bottom: 8.5px;
 	line-height: 1.5em;
 	padding-right: 1em;
@@ -67,7 +66,7 @@ and post title, body and byline styles */
 	margin: 1%;
 }
 
-#post_wrapper {
+.post_wrapper {
 	border-bottom-style: solid;
 	border-bottom-width: thin;
 	border-bottom-color: #7851a9;
@@ -104,13 +103,15 @@ and post title, body and byline styles */
 .right {
 	float: right;
 	margin: 0 1%;
-	max-width: 45%;
+	max-width: 35%;
+	padding-right: 2%;
+	padding-top: 1%;
 }
 
 .left {
 	float: left;
 	margin: 1%;
-	max-width: 45%;
+	max-width: 35%;
 	clear: right;
 }
 
@@ -120,7 +121,7 @@ and post title, body and byline styles */
 	margin-right: auto;
 	margin-top: 1%;
 	margin-bottom: 1%;
-	max-width: 50%;
+	max-width: 40%;
 	clear: both;
 }
 
@@ -136,6 +137,7 @@ and post title, body and byline styles */
 
 .post_footer li {
 	display: inline-block;
+	padding-right: 3%;
 }
 
 .pagination {
@@ -181,10 +183,10 @@ div.pagination span.disabled_item {
 
 /* Styles for main Index page sidebar */
 #sidebar {
-	margin: 1%;
+	margin: 2% 1% 7% 1%;
 	line-height: 1.5em;
-	padding: 1em 1em;
 	border-radius: 16px;
+	padding: 1em;
 }
 
 #sidebar div {
@@ -204,11 +206,20 @@ div.pagination span.disabled_item {
 	padding: 1em 1em;
 }
 
+.form_container {
+	max-width: 790px;
+	margin: 0 auto;
+}
+
 #login_form_error {
 	color: red;
 }
 
 /* Styles for Post page, including post form styles */
+#blog_post_form * {
+	margin: 0;
+}
+
 #title_input {
 	width: 50%;
 	height: 1.5em;
@@ -217,6 +228,7 @@ div.pagination span.disabled_item {
 #flask-pagedown-body {
 	width: 50%;
 	height: 5em;
+	margin-bottom: 2%;
 }
 
 .flask-pagedown-preview {
@@ -241,10 +253,13 @@ div.pagination span.disabled_item {
 
 #blog_post_form {
 	list-style-type: none;
+	padding: 0;
+	margin-top: 0;
 }
 
 #blog_post_form li {
 	display: block;
+	padding: 10px 0;
 }
 
 /* Styles for About page */
@@ -332,14 +347,17 @@ input[type="submit"] {
     font-size: 75%;
 }
 
-input[type="file"] {
-    height: 2em;
-    width: 50em;
-    background: gainsboro;
-    border: 1px solid #b2b2cc;
-    border-radius: 4px;
-    box-shadow: 2px 2px 3px rgba(0,0,0,.5);
-    color: black;
+.myButton {
+	display: block;
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: #7851a9;
+	width: 50%;
+}
+
+#post_form_submit {
+	margin-top: .75%;
+	width: 75%;
 }
 
 /* Styles rules for screens @ least 481px */
@@ -352,28 +370,28 @@ input[type="file"] {
 #title {
 	font-size: 150%;
 }
-
-#sidebar {
-	margin: 1%;
-}
 	
 /* Style rules for screens @ least 780 px */
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 790px) {
 
 #container {
 	margin: 0 auto 2px auto;
-	width: 800px;
+	width: 790px;
 }
 
 .masthead_elements { 
 	margin: 1% 1% 8.5px 1%;
 }
 	
+#masthead div {
+	width: 790px;
+	margin: 0 auto;
+}
+
 #post { 
 	float: left;
 	margin: 1% 1% 8.5px 1%;
 	width: 70%;
-	max-width: 850px;
 }
 
 .pagination {
@@ -390,16 +408,35 @@ input[type="file"] {
 #about_body { 
 	float: left;
 	margin: 2% 1% 2% 0%;
-	width: 25%;
-	max-width: 600px;
+	width: 55%;
 }
  
 #about_title {
   float: left;
-  margin: 2% 1.5% 2% 18%;
-  width: 25%;
+  margin: 2% 1.5% 2% 1%;
+  width: 35%;
 }
 
-.form_container {
-	margin-left: 16.5%;
+form {
+	padding-left: 10px;
+}
+
+.right {
+	max-width: 50%;
+}
+
+.left {
+	max-width: 50%;
+}
+
+.center {
+	max-width: 55%;
+}
+
+.center_image_extra_bottom_margin {
+	padding-bottom: 5%;
+}
+
+.post_wrapper_no_border {
+	border-bottom: none;
 }
