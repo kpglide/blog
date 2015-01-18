@@ -7,6 +7,7 @@ class Config:
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 	SQLALCHEMY_RECORD_QUERIES = True
 	POSTS_PER_PAGE = 5
+	SSL_DISABLE = True
 
 	@staticmethod
 	def init_app(app):

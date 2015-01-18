@@ -1,33 +1,57 @@
-*.py[cod]
 
+
+gitignore/Python.gitignore
+Carl Suster arcresu on Sep 1, 2014
+Merge pull request #955 from arjun024/master
+
+24 contributors
+Carl Suster Metallicow Noe Misael Nieto Arroyo Evandro Leopoldino Gonçalves Matheus Lima Honza Javorek Ray Shan Sam Clements Jordi Llonch Kevin Deldycke Justin Spahr-Summers Reinout van Rees Hugo Changjian Gao Adam Vandenberg Mateusz Jagiełło Vincent Driessen Eduard Carreras Daniel Hengeveld Chris Jerdonek Visgean Skeloru Arjun Sreedharan Michael Gruber Adam Roben
+55 lines (45 sloc) 0.675 kb
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
 # C extensions
 *.so
-
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
 .installed.cfg
-lib
-lib64
-__pycache__
-
+*.egg
+# PyInstaller
+# Usually these files are written by a python script from a template
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 # Installer logs
 pip-log.txt
-
+pip-delete-this-directory.txt
 # Unit test / coverage reports
+htmlcov/
+.tox/
 .coverage
-.tox
+.cache
 nosetests.xml
-
+coverage.xml
 # Translations
+*.mo
+*.pot
+# Django stuff:
+*.log
+# Sphinx documentation
+docs/_build/
+# PyBuilder
+target/
 *.mo
 
 # Mr Developer
