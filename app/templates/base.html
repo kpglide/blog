@@ -59,7 +59,7 @@
 	<footer id="footer">
 		<ul id="admin_links">
 			{% if not current_user.is_authenticated() %}
-			<li><a href="/auth/admin">Admin Login</a></li>
+			<!-- <li><a href="/auth/admin">Admin Login</a></li> -->
 			{% else %}
 			<li>
 				<a href="{{ url_for('main.post') }}">Post</a>
