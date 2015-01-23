@@ -2,7 +2,7 @@
 /* CSS Document */
 
 html {
-	height: 96%;
+	height: 97%;
 }
 
 body {
@@ -35,8 +35,8 @@ body {
 	margin-left: 1%;
 	margin-bottom: 8.5px;
 	line-height: 1.5em;
-	padding-right: 1em;
-	padding-left: 1em;
+	padding-right: .5em;
+	padding-left: .5em;
 }
 
 #masthead h2 a {
@@ -64,6 +64,7 @@ and post title, body and byline styles */
 
 #post {
 	margin: 1%;
+	max-width: 100%;
 }
 
 .post_wrapper {
@@ -72,7 +73,7 @@ and post title, body and byline styles */
 	border-bottom-color: #7851a9;
 	clear: both;
 	line-height: 1.5em;
-	padding: .50em 0 .50em 1em;
+	padding: .50em;
 }
 
 #title {
@@ -264,14 +265,14 @@ div.pagination span.disabled_item {
 
 /* Styles for About page */
 #about_title {
-	margin: 1%;
 	background-color: #7851a9;
 	color: white;
-	font-size: 350%;
+	font-size: 300%;
 	padding: 1%;
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
+	margin: 1.5%;
 }
 
 #about_title p {
@@ -279,7 +280,6 @@ div.pagination span.disabled_item {
 }
 
 #about_body {
-	margin: 1%;
 	background-color: #7851a9;
 	color: white;
 	line-height: 1.5em;
@@ -287,6 +287,7 @@ div.pagination span.disabled_item {
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
+	margin: 1.5%;
 }
 
 #about_body a {
@@ -301,6 +302,7 @@ div.pagination span.disabled_item {
 #footer {
 	height: 30px;
 	background-color: #7851a9;
+	margin-top: 1%;
 }
 
 #footer li {
@@ -313,8 +315,8 @@ div.pagination span.disabled_item {
 
 #admin_links {
 	text-align: right;
+	padding: 3px;
 	padding-right: 4%;
-	padding-top: 5px;
 }
 
 /* Flashed message styling */
