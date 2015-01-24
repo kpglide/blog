@@ -2,7 +2,7 @@
 /* CSS Document */
 
 html {
-	height: 97%;
+	height: 100%;
 }
 
 body {
@@ -31,7 +31,7 @@ body {
 }
 
 .masthead_elements {
-	margin-top: 1%;
+	margin-top: .5%;
 	margin-left: 1%;
 	margin-bottom: 8.5px;
 	line-height: 1.5em;
@@ -81,6 +81,7 @@ and post title, body and byline styles */
 	font-size: 150%;
 	color: #7851a9;
 	margin: .5% 0 0 0;
+	font-weight: 600;
 }
 
 #title a {
@@ -192,6 +193,7 @@ div.pagination span.disabled_item {
 	line-height: 1.5em;
 	border-radius: 16px;
 	padding: 1em;
+	font-weight: 500;
 }
 
 #sidebar div {
@@ -320,6 +322,7 @@ div.pagination span.disabled_item {
 	text-align: right;
 	padding: 3px;
 	padding-right: 4%;
+	margin: 0;
 }
 
 /* Flashed message styling */
