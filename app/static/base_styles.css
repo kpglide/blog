@@ -73,12 +73,14 @@ and post title, body and byline styles */
 	border-bottom-color: #7851a9;
 	clear: both;
 	line-height: 1.5em;
-	padding: .50em;
+	padding: 1em .50em 2em .50em;
+	margin-bottom: 1em;
 }
 
 #title {
-	line-height: 25%;
+	font-size: 150%;
 	color: #7851a9;
+	margin: .5% 0 0 0;
 }
 
 #title a {
@@ -91,14 +93,16 @@ and post title, body and byline styles */
 }
 
 #byline {
-	font-size: 90%;
-	margin-top: 1%;
-	margin-bottom: -2.5%;
+	font-size: 85%;
+	margin-top: -.5%;
+	color: #999999;
+
 }
 
 #post_body {
 	margin-top: -1%;
-	font-size: 105%
+	font-size: 110%;
+	font-weight: 700;
 }
 
 .right {
@@ -184,7 +188,7 @@ div.pagination span.disabled_item {
 
 /* Styles for main Index page sidebar */
 #sidebar {
-	margin: 2% 1% 7% 1%;
+	margin: 3% 1% 7% 1%;
 	line-height: 1.5em;
 	border-radius: 16px;
 	padding: 1em;
@@ -283,7 +287,7 @@ div.pagination span.disabled_item {
 	background-color: #7851a9;
 	color: white;
 	line-height: 1.5em;
-	padding: 1%;
+	padding: 1% 15px 1% 15px;
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
