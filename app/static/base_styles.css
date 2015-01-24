@@ -16,7 +16,7 @@ body {
 
 .wrapper {
 	min-height: 100%;
-	margin: 0 auto -30px 0;
+	margin: 0 auto -30px;
 }
 
 /* Masthead styles */
@@ -31,7 +31,7 @@ body {
 }
 
 .masthead_elements {
-	margin-top: .5%;
+	margin-top: 0%;
 	margin-left: 1%;
 	margin-bottom: 8.5px;
 	line-height: 1.5em;
@@ -189,10 +189,12 @@ div.pagination span.disabled_item {
 
 /* Styles for main Index page sidebar */
 #sidebar {
-	margin: 3% 1% 7% 1%;
+	margin: 1%;
 	line-height: 1.5em;
 	border-radius: 16px;
 	padding: 1em;
+	padding-bottom: 3.5em;
+	padding-top: .5em;
 	font-weight: 500;
 }
 
@@ -303,24 +305,24 @@ div.pagination span.disabled_item {
 /* Footer styles */
 .footer, .push {
 	clear: both;
+	height: 30px;
 }
 
-#footer {
-	height: 30px;
+.footer {
 	background-color: #7851a9;
 }
 
-#footer li {
+.footer li {
 	display: inline-block;
 }
 
-#footer a {
+.footer a {
 	color: #b2b2cc;
 }
 
 #admin_links {
 	text-align: right;
-	padding: 3px;
+	padding: 5px;
 	padding-right: 4%;
 	margin: 0;
 }
@@ -399,6 +401,7 @@ input[type="submit"] {
 #post { 
 	float: left;
 	margin: 1% 1% 8.5px 1%;
+	padding-bottom: 15px;
 	width: 70%;
 }
 
