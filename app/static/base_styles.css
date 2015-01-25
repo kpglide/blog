@@ -41,8 +41,7 @@ body {
 
 #masthead h2 a {
 	text-decoration: none;
-	font-size: 110%;
-	font-weight: 450;
+	font-size: 100%;
 }
 
 #masthead ul {
@@ -195,6 +194,7 @@ div.pagination span.disabled_item {
 	padding: 1em;
 	padding-bottom: 3.5em;
 	padding-top: .5em;
+	font-weight: 500;
 }
 
 #sidebar div {
@@ -206,6 +206,7 @@ div.pagination span.disabled_item {
 	color: #7851a9;
 	font-size: 105%;
 	border-color: #7851a9;
+	font-weight: 500;
 }
 
 /* Additional styles for Admin page, including login form */
@@ -412,13 +413,7 @@ input[type="submit"] {
 #sidebar {
   float: left;
   margin: 1%;
-  margin-top: 1.25%;
   width: 20%;
-  font-weight: 500;
-}
-
-#sidebar div {
-	font-weight: 500;
 }
   
 #about_body { 
