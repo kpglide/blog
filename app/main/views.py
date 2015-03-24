@@ -113,6 +113,10 @@ def delete(id):
 def about():
 	return render_template('about.html')
 
+@main.route('/sportsmedialawtimeline')
+def timeline():
+	return render_template('sportsmedialawtimeline.html')
+
 @main.route('/shutdown')
 def server_shutdown():
 	if not current_app.testing:

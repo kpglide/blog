@@ -1,0 +1,66 @@
+{% import "_macros.html" as macros %}
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+		<meta name="viewport" content="initial-scale=1">
+
+		{% if title %}
+		<title>{{ title }}</title>
+		{% else %}
+		<title>Kevin Glidewell Blog</title>
+		{% endif %}
+
+		<link rel="stylesheet" href="/static/base_styles.css">
+
+		{{ moment.include_jquery() }}
+		{{ moment.include_moment() }}
+
+	</head>
+	
+	<body>
+	
+	<div class="wrapper">
+
+	<div id="masthead">
+		<div>
+		<ul class="masthead_elements">
+			<li><h2><a href="/index">Kevin Glidewell</a></h2></li><br>
+		</ul>
+		<ul class="masthead_elements">
+			<li><a href="{{url_for('main.index')}}">Home</a></li>
+			<li><a href="{{url_for('main.about')}}">About</a></li>
+		</ul>
+		</div>
+	</div>
+
+	<div id="timeline_container">
+	
+		<iframe src='http://cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=0Ajs780VI3AccdFdrZXNUSmJQUkxBRXFldWd2elh4Y0E#gid&font=Bevan-PotanoSans&maptype=toner&lang=en&height=650' width='100%' height='650' frameborder='0'></iframe>
+	
+	</div>
+	
+	<div class="push"></div>
+	</div>
+
+	<footer class="footer">
+		<ul id="admin_links">
+			{% if not current_user.is_authenticated() %}
+			<!-- <li><a href="/auth/admin">Admin Login</a></li> -->
+			{% else %}
+			<li>
+				<a href="{{ url_for('main.post') }}">Post</a>
+				<a href="{{ url_for('auth.logout') }}">Logout</a>
+			</li>
+			{% endif %}
+		</ul>
+	</footer>
+	
+	<script type="text/javascript" src="{{ url_for('static', filename='confirm.js') }}"></script>
+
+	</body>
+</html>
