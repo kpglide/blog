@@ -113,6 +113,8 @@ def delete(id):
 def about():
 	return render_template('about.html')
 
+#This is a page I built for a legal industry presentation.  It displays
+#a timeline of events related to the sports media industry.
 @main.route('/sportsmedialawtimeline')
 def timeline():
 	return render_template('sportsmedialawtimeline.html')
